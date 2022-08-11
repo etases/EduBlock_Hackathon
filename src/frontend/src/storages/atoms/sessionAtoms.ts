@@ -1,5 +1,5 @@
 import { atom } from 'jotai'
 
 export const sessionStorage = {
-    darkMode: atom(false)
+  darkMode: atom(false)
 }

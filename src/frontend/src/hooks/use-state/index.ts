@@ -1,2 +1,2 @@
-export * from './useGlobalState'
+export * from './useSessionState'
 export * from './usePersistentState'

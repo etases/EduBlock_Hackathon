@@ -3,10 +3,10 @@ import { Provider } from 'jotai'
 import { ReactNode } from 'react'
 
 interface GlobalStateProviderProps extends BaseInterface {
-    children: ReactNode
+  children: ReactNode
 }
 
 export function GlobalStateProvider(props: GlobalStateProviderProps) {
-    const { children } = props
-    return <Provider>{children}</Provider>
+  const { children } = props
+  return <Provider>{children}</Provider>
 }
