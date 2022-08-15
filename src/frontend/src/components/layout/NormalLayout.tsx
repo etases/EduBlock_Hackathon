@@ -17,7 +17,7 @@ export function NormalLayout() {
       width={'100%'}
       height={'100%'}
       display={'grid'}
-      gridTemplateAreas={`"header header"
+      gridTemplateAreas={`"aside header"
                           "aside main"
                           "aside footer"`}
       gridTemplateRows={'50px auto 50px'}
