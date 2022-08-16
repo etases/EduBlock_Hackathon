@@ -1,5 +1,16 @@
 import { NormalLayout } from '@fe/components'
-import { App, Home } from '@fe/pages'
+import {
+  App,
+  Class,
+  ClassCreate,
+  ClassUpdate,
+  Home,
+  Login,
+  SchoolReport,
+  Student,
+  Teacher,
+  TeacherPending
+} from '@fe/pages'
 import { Navigate, RouteObject } from 'react-router-dom'
 
 const ROLE = {
@@ -21,7 +32,7 @@ interface NavigationObject extends RouteObject {
   children?: NavigationObject[]
 }
 
-const Anyone: Role[] = [ROLE.ANY]
+const Anyone: Role[] = Object.values(ROLE)
 const Anonymous: Role[] = [ROLE.GUEST]
 const Authenticated: Role[] = [ROLE.ADMIN, ROLE.TEACHER, ROLE.STUDENT]
 
@@ -38,12 +49,12 @@ const ROUTES: NavigationObject[] = [
       },
       {
         path: 'login',
-        element: '<Login />',
+        element: <Login />,
         role: Anonymous
       },
       {
         path: 'school-report',
-        element: '<SchoolReport />',
+        element: <SchoolReport />,
         role: Authenticated
       },
       {
@@ -53,32 +64,32 @@ const ROUTES: NavigationObject[] = [
         children: [
           {
             path: 'teacher',
-            element: '<Teacher />',
+            element: <Teacher />,
             role: [ROLE.ADMIN]
           },
           {
             path: 'teacher-pending',
-            element: '<TeacherPending />',
+            element: <TeacherPending />,
             role: [ROLE.ADMIN]
           },
           {
             path: 'class',
-            element: '<Class />',
+            element: <Class />,
             role: [ROLE.ADMIN, ROLE.TEACHER]
           },
           {
             path: 'class-create',
-            element: '<ClassCreate />',
+            element: <ClassCreate />,
             role: [ROLE.ADMIN]
           },
           {
             path: 'class-update',
-            element: '<ClassUpdate />',
+            element: <ClassUpdate />,
             role: [ROLE.ADMIN]
           },
           {
             path: 'student',
-            element: '<Student />',
+            element: <Student />,
             role: Authenticated
           }
         ]
@@ -119,8 +130,8 @@ export function getRoutes(
       if (r.children && r.children.length > 0)
         tmpRoute.children = getRoutes({ role, routes: r.children })
 
-      if (tmpRoute.role.some((cr) => cr === role || cr === ROLE.ANY))
-        result.push(tmpRoute)
+      // if (tmpRoute.role.some((cr) => cr === role || cr === ROLE.ANY))
+      result.push(tmpRoute)
     } catch (e) {
       console.debug(e.message)
     }

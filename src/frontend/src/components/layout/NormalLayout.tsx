@@ -3,11 +3,21 @@ import { Box, Button, Stack, Typography } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { Link as RouterLink, Outlet } from 'react-router-dom'
 import { Header } from './components'
+
 const TEXT = {
   HOME: 'Home',
   HEADER: 'Header',
   FOOTER: 'Footer',
-  ROOT: 'Root'
+  ROOT: 'Root',
+  LOGIN: 'Login',
+  SCHOOL_REPORT: 'School Report',
+  APP: 'App',
+  TEACHER: 'Teacher',
+  TEACHER_PENDING: 'Teacher Pending',
+  CLASS: 'Class',
+  CLASS_CREATE: 'Class Create',
+  CLASS_UPDATE: 'Class Update',
+  STUDENT: 'Student'
 }
 
 export function NormalLayout() {
@@ -39,9 +49,72 @@ export function NormalLayout() {
         <Button
           fullWidth={true}
           component={RouterLink}
-          to={'home'}
+          to={'/'}
         >
           <Typography>{TEXT.HOME}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app'}
+        >
+          <Typography>{TEXT.APP}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/login'}
+        >
+          <Typography>{TEXT.LOGIN}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/school-report'}
+        >
+          <Typography>{TEXT.SCHOOL_REPORT}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app/teacher'}
+        >
+          <Typography>{TEXT.TEACHER}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app/teacher-pending'}
+        >
+          <Typography>{TEXT.TEACHER_PENDING}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app/class'}
+        >
+          <Typography>{TEXT.CLASS}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app/class-create'}
+        >
+          <Typography>{TEXT.CLASS_CREATE}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app/class-update'}
+        >
+          <Typography>{TEXT.CLASS_UPDATE}</Typography>
+        </Button>
+        <Button
+          fullWidth={true}
+          component={RouterLink}
+          to={'/app/student'}
+        >
+          <Typography>{TEXT.STUDENT}</Typography>
         </Button>
       </Box>
       {/* main view */}
