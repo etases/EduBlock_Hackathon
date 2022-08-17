@@ -38,6 +38,7 @@ export function NormalLayout() {
       <Box
         gridArea={'header'}
         bgcolor={grey[100]}
+        overflow={'hidden'}
       >
         <Header />
       </Box>
