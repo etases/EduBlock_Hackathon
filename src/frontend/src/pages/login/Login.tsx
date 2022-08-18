@@ -9,8 +9,7 @@ import { ReactComponent as PlugSvg } from './assets/svg/plug.svg'
 const TEXT = {
   LOGIN: 'Login',
   WELCOME_BACK: 'Welcome Back',
-  CONNECT_TO_PLUG: 'Connect to Plug',
-  REGISTER: 'Register'
+  CONNECT_TO_PLUG: 'Connect to Plug'
 }
 
 export function Login() {
@@ -46,7 +45,6 @@ export function Login() {
               {TEXT.CONNECT_TO_PLUG}
             </Typography>
           </Button>
-          <Typography variant={'subtitle2'}>{TEXT.REGISTER}</Typography>
         </Stack>
       </Box>
       <Box
