@@ -8,8 +8,15 @@ import fpticon from "./images/fpticon.png";
 import fues from "./images/fues.png";
 import img_block_big from "./images/BigBlock.png";
 import rec from "./images/rectangle.png";
+import { useNavigate } from "react-router-dom";
 
 const viewportContext = React.createContext({});
+
+const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("../login/index");
+    }
 
 const ViewportProvider = ({ children }) => {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -84,7 +91,7 @@ const MobileComponent = () => (
             </Typography>
           </Stack>
           <p></p>
-          <Button
+          <Button onClick={handleClick}
             sx={{
               background: "#666efa",
               color: "white",
@@ -235,7 +242,7 @@ const DesktopComponent = () => (
         <Typography fontSize="1.5rem">
           &emsp;&emsp;Học bạ điện tử BlockChain
         </Typography>
-        <Button
+        <Button onClick={handleClick}
           sx={{
             background: "#666efa",
             color: "white",
