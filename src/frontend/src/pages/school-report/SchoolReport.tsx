@@ -28,6 +28,14 @@ import edit from "./images/Edit.png";
 import avt from "./images/AVT.png";
 // import { useMediaQuery } from "react-responsive";
 import { GridColDef, GridRowsProp, DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
+
+
+const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("...");
+    }
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "Môn học", width: 250 },
@@ -188,7 +196,7 @@ const MobileComponent = () => (
             alignItems="baseline"
             spacing={0.5}
           >
-            <Button
+            <Button  onClick={handleClick}
               borderRadius={5}
               sx={{
                 background: "#c0c4c4",
@@ -513,7 +521,7 @@ const DesktopComponent = () => (
           alignItems="baseline"
           spacing={0.5}
         >
-          <Button
+          <Button onClick={handleClick}
             borderRadius={5}
             sx={{
               background: "#c0c4c4",
