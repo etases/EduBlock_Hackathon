@@ -44,7 +44,6 @@ export function useStudentLogin(props?: UseStudentLoginProps) {
             gender: account.gender.value,
             lastName: account.lastName,
             phone: account.phone,
-            ethnic: account.ethnic,
             principalId: account.principalId || principal,
             role: {
               id: account.role.id,
