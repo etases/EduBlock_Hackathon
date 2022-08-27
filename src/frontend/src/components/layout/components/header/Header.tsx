@@ -14,27 +14,27 @@ export function Header() {
         // alignSelf={'start'}
       >
         <Typography
-          fontSize={64}
+          fontSize={85}
           color={'white'}
           fontWeight={600}
         >
           {TEXT.EDU}
         </Typography>
         <Typography
-          fontSize={64}
+          fontSize={85}
           color={'#6B6AB7'}
           fontWeight={600}
         >
           {TEXT.BLOCK}
         </Typography>
-      </Stack>
+      </Stack>  
       <Typography
         // alignSelf={'end'}
-        // marginRight={1}
+         marginRight={1}
         fontWeight={600}
         color={'white'}
       >
-        Blockchain-based School Report
+        Học bạ điện tử Block-chain                           
       </Typography>
     </Stack>
   )

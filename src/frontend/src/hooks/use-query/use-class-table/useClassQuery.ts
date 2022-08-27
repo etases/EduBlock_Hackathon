@@ -1,7 +1,7 @@
 import { BaseInterface } from '@fe/constants'
 import { useDebounce } from '@fe/hooks'
 import { useQuery } from '@fe/hooks/use-query/core'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface UseClassQueryProps extends BaseInterface {
   initialProps: {
@@ -61,12 +61,12 @@ export function useClassQuery(props: UseClassQueryProps) {
     ...props,
     ...(typeof props.sideEffectFunctions === 'undefined'
       ? {
-          sideEffectFunctions: {
-            onError(error) {},
-            onSuccess(data) {},
-            onSettled(data, error) {}
-          }
+        sideEffectFunctions: {
+          onError(error) { },
+          onSuccess(data) { },
+          onSettled(data, error) { }
         }
+      }
       : props.sideEffectFunctions)
   }
   const [classes, setClasses] = useState<any[]>([])
@@ -81,6 +81,14 @@ export function useClassQuery(props: UseClassQueryProps) {
     delay: 500
   })
 
+  useEffect(() => {
+    setSearch('')
+  }, [])
+
+  // useEffect(() => {
+  //   queryResult.refetch()
+  // }, [searchDebounced])
+
   const queryResult = useQuery({
     options: {
       enabled: false,
@@ -89,7 +97,8 @@ export function useClassQuery(props: UseClassQueryProps) {
           endpoint: ENDPOINT,
           page,
           pageSize,
-          search: searchDebounced
+          // search
+          // search: searchDebounced
         }
       ],
       onSettled(data, error) {
@@ -107,19 +116,19 @@ export function useClassQuery(props: UseClassQueryProps) {
           // format data and return formatted data
           const formattedResult = Array.isArray(results)
             ? results.map((aclass) =>
-                apiFields.reduce(
-                  (prev, { localPropName, remotePropName }) => ({
-                    ...prev,
-                    [localPropName]: aclass[remotePropName]
-                  }),
-                  {}
-                )
+              apiFields.reduce(
+                (prev, { localPropName, remotePropName }) => ({
+                  ...prev,
+                  [localPropName]: aclass[remotePropName]
+                }),
+                {}
               )
+            )
             : []
 
           if (typeof onSuccessCallback === 'function')
             onSuccessCallback(formattedResult)
-          // console.log(formattedResult)
+          console.log(formattedResult)
           return formattedResult
         }),
           setPagination((_) => {
@@ -135,8 +144,8 @@ export function useClassQuery(props: UseClassQueryProps) {
         user_field_names: true,
         page: page + 1,
         size: pageSize,
-        ...(typeof searchDebounced === 'string' && searchDebounced.length > 0
-          ? { search: searchDebounced }
+        ...(typeof search === 'string' && search.length > 0
+          ? { search }
           : {})
       }
     }
